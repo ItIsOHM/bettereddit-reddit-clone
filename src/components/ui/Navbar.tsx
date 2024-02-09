@@ -14,7 +14,7 @@ const Navbar = async () => {
         <Link href="/" className="flex gap-2 items-center">
           <Icons.logo className="h-8 w-8 sm:h-6 sm:w-6" />
           <p className="sr-only md:not-sr-only text-sm font-medium">
-            Bettereddit
+          Redidit
           </p>
         </Link>
 

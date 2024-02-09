@@ -25,7 +25,7 @@ export default async function Home() {
           <div className="-my-3 divide-gray-100 px-6 py-4 text-sm leading-6">
             <div className="flex justify-between gap-x-4 py-3">
               <p>
-                Your Bettereddit Homepage. Checkout your favourite communities
+                Your Redidit Homepage. Checkout your favourite communities
                 here!
               </p>
             </div>
