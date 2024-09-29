@@ -36,8 +36,6 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
 
   const debounceRequest = useCallback(() => {
     request();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -77,28 +75,31 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
         placeholder="Search communities..."
       />
 
-      {input.length > 0 && (
-        <CommandList className="absolute bg-secondary top-full inset-x-0 shadow rounded-b-md">
-          {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
-          {(queryResults?.length ?? 0) > 0 ? (
-            <CommandGroup heading="Communities">
-              {queryResults?.map((subreddit) => (
-                <CommandItem
-                  onSelect={(e: any) => {
-                    router.push(`/r/${e}`);
-                    router.refresh();
-                  }}
-                  key={subreddit.id}
-                  value={subreddit.name}
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  <a href={`/r/${subreddit.name}`}>r/{subreddit.name}</a>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          ) : null}
-        </CommandList>
-      )}
+      {/* Always render CommandList but conditionally hide it */}
+      <CommandList
+        className={`absolute bg-secondary top-full inset-x-0 shadow rounded-b-md ${
+          input.length === 0 ? "hidden" : ""
+        }`}
+      >
+        {isFetched && <CommandEmpty>No results found.</CommandEmpty>}
+        {(queryResults?.length ?? 0) > 0 ? (
+          <CommandGroup heading="Communities">
+            {queryResults?.map((subreddit) => (
+              <CommandItem
+                onSelect={(e: any) => {
+                  router.push(`/r/${e}`);
+                  router.refresh();
+                }}
+                key={subreddit.id}
+                value={subreddit.name}
+              >
+                <Users className="mr-2 h-4 w-4" />
+                <a href={`/r/${subreddit.name}`}>r/{subreddit.name}</a>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        ) : null}
+      </CommandList>
     </Command>
   );
 };

@@ -45,7 +45,6 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
     <div>
       <div className="h-full flex flex-col sm:flex-row items-center sm:items-start justify-between">
         <Suspense fallback={<PostVoteShell />}>
-          {/* @ts-expect-error server component */}
           <PostVoteServer
             postId={post?.id ?? cachedPost.id}
             getData={async () => {
@@ -73,7 +72,6 @@ const SubRedditPostPage = async ({ params }: SubRedditPostPageProps) => {
           <EditorOutput content={post?.content ?? cachedPost.content} />
           
           <Suspense fallback={<Loader2 className="h-5 w-5 animate-spin text-zinc-50" />}>
-            {/* @ts-expect-error */}
             <CommentSection postId={post?.id ?? cachedPost.id} />
           </Suspense>
         </div>

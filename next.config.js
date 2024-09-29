@@ -1,11 +1,16 @@
-/** @type {import('next').NextConfig} */
+const { hostname } = require("os");
+
 const nextConfig = {
   images: {
-    domains: ['uploadthing.com', 'lh3.googleusercontent.com'],
+    remotePatterns: [
+      { hostname: "uploadthing.com" },
+      { hostname: "lh3.googleusercontent.com" },
+      { hostname: "utfs.io" },
+    ],
   },
   experimental: {
-    appDir: true
-  }
-}
+    appDir: true,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
