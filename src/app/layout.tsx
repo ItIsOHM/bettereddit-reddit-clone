@@ -36,7 +36,6 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-          {/*@ts-expect-error server component*/}
           <Navbar />
 
           {authModal}
